@@ -1,20 +1,20 @@
 package dev.slickcollections.kiwizin.nms.interfaces.entity;
 
-import dev.slickcollections.kiwizin.libraries.holograms.api.HologramLine;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Slime;
+import dev.slickcollections.kiwizin.libraries.holograms.api.HologramLine;
 
 public interface ISlime {
-  
-  void setPassengerOf(Entity entity);
-  
-  void setLocation(double x, double y, double z);
-  
-  boolean isDead();
-  
-  void killEntity();
-  
-  Slime getEntity();
-  
-  HologramLine getLine();
+
+  public void setPassengerOf(Entity entity);
+
+  public void setLocation(double x, double y, double z);
+
+  public boolean isDead();
+
+  public void killEntity();
+
+  public Slime getEntity();
+
+  public HologramLine getLine();
 }
