@@ -25,12 +25,12 @@ public class SkyWarsTable extends DataTable {
     if (database instanceof MySQLDatabase) {
       if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `kCoreSkyWars` LIKE 'leveling'") == null) {
         ((MySQLDatabase) database).execute(
-            "ALTER TABLE `kCoreSkyWars` ADD `leveling` TEXT DEFAULT '{}' AFTER `kitconfig`");
+            "ALTER TABLE `kCoreSkyWars` ADD `leveling` TEXT AFTER `kitconfig`");
       }
     } else if (database instanceof HikariDatabase) {
       if (((HikariDatabase) database).query("SHOW COLUMNS FROM `kCoreSkyWars` LIKE 'leveling'") == null) {
         ((HikariDatabase) database).execute(
-            "ALTER TABLE `kCoreSkyWars` ADD `leveling` TEXT DEFAULT '{}' AFTER `kitconfig`");
+            "ALTER TABLE `kCoreSkyWars` ADD `leveling` TEXT AFTER `kitconfig`");
       }
     }
   }
