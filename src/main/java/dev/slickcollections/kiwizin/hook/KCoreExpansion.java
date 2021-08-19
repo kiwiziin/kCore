@@ -24,7 +24,7 @@ public class KCoreExpansion extends PlaceholderExpansion {
   
   @Override
   public String getAuthor() {
-    return "Kiwizin";
+    return "Nysina";
   }
   
   @Override

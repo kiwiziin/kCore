@@ -21,6 +21,7 @@ public class MenuDeliveries extends UpdatablePlayerMenu {
   
   private Profile profile;
   private Map<ItemStack, Delivery> deliveries;
+  
   public MenuDeliveries(Profile profile) {
     super(profile.getPlayer(), "Entregas", 5);
     this.profile = profile;

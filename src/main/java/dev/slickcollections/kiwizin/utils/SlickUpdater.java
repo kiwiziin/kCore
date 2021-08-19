@@ -59,7 +59,6 @@ public class SlickUpdater {
   
   public void downloadUpdate(Player player) {
     player.sendMessage("§aTentando baixar atualização...");
-    
     try {
       File file = new File("plugins/kCore/update", "kCore.jar");
       if (!file.getParentFile().exists()) {
@@ -71,7 +70,6 @@ public class SlickUpdater {
       BufferedInputStream in = new BufferedInputStream(connection.getInputStream());
       FileOutputStream fos = new FileOutputStream(file);
       BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
-      
       int oneChar;
       int progress = 0;
       player.sendMessage("§aTamanho do arquivo: " + (max / 1024) + "kb");

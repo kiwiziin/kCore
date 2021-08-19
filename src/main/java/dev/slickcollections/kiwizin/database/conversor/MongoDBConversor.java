@@ -112,8 +112,7 @@ public class MongoDBConversor implements Listener {
             } finally {
               try {
                 rs.close();
-              } catch (SQLException ignore) {
-              }
+              } catch (SQLException ignore) {}
             }
             if (collection.equalsIgnoreCase("Profile") && !this.currentTable.equalsIgnoreCase("kCoreProfile")) {
               documents.forEach(document -> {
@@ -139,11 +138,17 @@ public class MongoDBConversor implements Listener {
   
   public static Document convertResultSetToDocument(String table, CachedRowSet rs) throws SQLException {
     Document document = new Document();
-    if (table.contains("SkyWars") || table.contains("TheBridge")) {
-      document.put("totalkills", rs.getLong("1v1kills") + rs.getLong("2v2kills"));
-      document.put("totalwins", rs.getLong("1v1wins") + rs.getLong("2v2wins"));
+    if (table.contains("SkyWars") || table.contains("TheBridge") || table.contains("BedWars")) {
+      if (table.contains("SkyWars") || table.contains("TheBridge")) {
+        document.put("totalkills", rs.getLong("1v1kills") + rs.getLong("2v2kills"));
+        document.put("totalwins", rs.getLong("1v1wins") + rs.getLong("2v2wins"));
+      }
       if (table.contains("TheBridge")) {
         document.put("totalpoints", rs.getLong("1v1points") + rs.getLong("2v2points"));
+      }
+      if (table.contains("BedWars")) {
+        document.put("totalkills", rs.getLong("1v1kills") + rs.getLong("2v2kills") + rs.getLong("4v4kills"));
+        document.put("totalwins", rs.getLong("1v1wins") + rs.getLong("2v2wins") + rs.getLong("4v4wins"));
       }
     }
     
@@ -162,8 +167,7 @@ public class MongoDBConversor implements Listener {
       try {
         document.put(name, rs.getLong(name));
         continue;
-      } catch (SQLException ignore) {
-      }
+      } catch (SQLException ignore) {}
       
       document.put(name, rs.getObject(name));
     }

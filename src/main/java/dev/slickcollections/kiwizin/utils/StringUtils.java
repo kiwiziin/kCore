@@ -165,7 +165,7 @@ public class StringUtils {
   public static <T> String join(T[] array, int index, String separator) {
     StringBuilder joined = new StringBuilder();
     for (int slot = index; slot < array.length; slot++) {
-      joined.append(array[slot].toString() + (slot + 1 == array.length ? "" : separator));
+      joined.append(array[slot].toString()).append(slot + 1 == array.length ? "" : separator);
     }
     
     return joined.toString();
@@ -190,7 +190,7 @@ public class StringUtils {
    * @return Resultado da junção.
    */
   public static <T> String join(Collection<T> collection, String separator) {
-    return join(collection.toArray(new Object[collection.size()]), separator);
+    return join(collection.toArray(new Object[0]), separator);
   }
   
   /**
@@ -218,7 +218,7 @@ public class StringUtils {
     String[] splittedString = toCapitalise.split(" ");
     for (int index = 0; index < splittedString.length; index++) {
       String append = splittedString[index];
-      result.append(append.substring(0, 1).toUpperCase() + append.substring(1).toLowerCase() + (index + 1 == splittedString.length ? "" : " "));
+      result.append(append.substring(0, 1).toUpperCase()).append(append.substring(1).toLowerCase()).append(index + 1 == splittedString.length ? "" : " ");
     }
     
     return result.toString();
@@ -246,7 +246,7 @@ public class StringUtils {
           for (int l = current.length() - 1; l > 0; l--) {
             if (current.charAt(l) == ' ') {
               current.deleteCharAt(l);
-              result.append(current + "\n");
+              result.append(current).append("\n");
               Collections.reverse(removedChars);
               current = new StringBuilder(join(removedChars, ""));
               break;
@@ -259,14 +259,14 @@ public class StringUtils {
           removedChars.clear();
           removedChars = null;
         } else {
-          result.append(current + "\n");
+          result.append(current).append("\n");
           current = new StringBuilder();
         }
       }
       
       current.append(current.length() == 0 && character == ' ' ? "" : character);
       if (charId + 1 == arr.length) {
-        result.append(current + "\n");
+        result.append(current).append("\n");
       }
     }
     

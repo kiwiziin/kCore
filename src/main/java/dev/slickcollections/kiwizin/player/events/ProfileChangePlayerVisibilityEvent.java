@@ -9,6 +9,7 @@ import org.bukkit.event.HandlerList;
 public class ProfileChangePlayerVisibilityEvent extends Event {
   
   private static final HandlerList HANDLER_LIST = new HandlerList();
+  
   private final Profile profile;
   private final PlayerVisibility playerVisibility;
   

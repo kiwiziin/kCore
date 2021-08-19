@@ -14,8 +14,10 @@ public class ServerItem {
   
   public static final KConfig CONFIG = Core.getInstance().getConfig("servers");
   public static final List<Integer> DISABLED_SLOTS = CONFIG.getIntegerList("disabled-slots");
+  
   public static final Map<String, Integer> SERVER_COUNT = new HashMap<>();
   private static final List<ServerItem> SERVERS = new ArrayList<>();
+  
   private final String key;
   private final int slot;
   private final String icon;
@@ -37,7 +39,8 @@ public class ServerItem {
           return;
         }
         
-        si.getBalancer().add(server, new Server(server.split(" ; ")[0], server.split(" ; ")[1], CONFIG.getInt("items." + key + ".max-players")));
+        si.getBalancer().add(server, new Server(server.split(" ; ")[0],
+            server.split(" ; ")[1], CONFIG.getInt("items." + key + ".max-players")));
       });
     }
     

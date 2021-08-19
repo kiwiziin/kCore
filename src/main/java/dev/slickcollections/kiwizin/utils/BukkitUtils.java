@@ -31,14 +31,20 @@ public class BukkitUtils {
   /**
    * Todas as cores prontas da classe {@link Color}
    */
+  
   public static final List<FieldAccessor<Color>> COLORS;
+  
   public static final MethodAccessor GET_PROFILE;
   public static final FieldAccessor<GameProfile> SKULL_META_PROFILE;
+  
   private static final Map<Class<?>, MethodAccessor> getHandleCache = new HashMap<>();
+  
   private static final Class<?> NBTagList = MinecraftReflection.getMinecraftClass("NBTTagList");
   private static final Class<?> NBTagString = MinecraftReflection.getMinecraftClass("NBTTagString");
+  
   private static final ConstructorAccessor<?> constructorTagList = new ConstructorAccessor<>(NBTagList.getConstructors()[0]);
   private static final ConstructorAccessor<?> constructorTagString = new ConstructorAccessor<>(NBTagString.getConstructors()[1]);
+  
   private static final MethodAccessor getTag = Accessors.getMethod(MinecraftReflection.getItemStackClass(), "getTag");
   private static final MethodAccessor setCompound = Accessors.getMethod(MinecraftReflection.getNBTTagCompoundClass(), "set", String.class, NBTagList.getSuperclass());
   private static final MethodAccessor addList = Accessors.getMethod(NBTagList, "add");
@@ -393,7 +399,8 @@ public class BukkitUtils {
    */
   public static Location deserializeLocation(String serialized) {
     String[] divPoints = serialized.split("; ");
-    Location deserialized = new Location(Bukkit.getWorld(divPoints[0]), parseDouble(divPoints[1]), parseDouble(divPoints[2]), parseDouble(divPoints[3]));
+    Location deserialized = new Location(Bukkit.getWorld(divPoints[0]), parseDouble(divPoints[1]),
+        parseDouble(divPoints[2]), parseDouble(divPoints[3]));
     deserialized.setYaw(parseFloat(divPoints[4]));
     deserialized.setPitch(parseFloat(divPoints[5]));
     return deserialized;

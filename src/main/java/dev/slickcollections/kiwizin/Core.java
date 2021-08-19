@@ -128,7 +128,7 @@ public class Core extends KPlugin {
   public void enable() {
     if (!NMS.setupNMS()) {
       this.setEnabled(false);
-      this.getLogger().warning("Sua versao nao e compativel com o plugin, utilize a versao 1_8_R3 (Atual: " + MinecraftVersion.getCurrentVersion().getVersion() + ")");
+      this.getLogger().warning("A sua versao nao e compativel com o plugin, utilize a versao 1_8_R3 (Atual: " + MinecraftVersion.getCurrentVersion().getVersion() + ")");
       return;
     }
     
@@ -149,7 +149,7 @@ public class Core extends KPlugin {
         }
       }
     } catch (IOException ex) {
-      getLogger().log(Level.SEVERE, "Cannot load blacklist.txt: ", ex);
+      this.getLogger().log(Level.SEVERE, "Cannot load blacklist.txt: ", ex);
     }
     
     if (!warnings.isEmpty()) {
@@ -179,7 +179,9 @@ public class Core extends KPlugin {
     }
     
     if (!PlaceholderAPIPlugin.getInstance().getDescription().getVersion().equals("2.10.5")) {
-      Bukkit.getConsoleSender().sendMessage(" \n §6§lAVISO IMPORTANTE\n \n §7Utilize a versão 2.10.5 do PlaceHolderAPI, você está utilizando a v" + PlaceholderAPIPlugin.getInstance().getDescription().getVersion() + "\n ");
+      Bukkit.getConsoleSender().sendMessage(
+          " \n §6§lAVISO IMPORTANTE\n \n §7Utilize a versão 2.10.5 do PlaceHolderAPI, você está utilizando a v" +
+              PlaceholderAPIPlugin.getInstance().getDescription().getVersion() + "\n ");
       System.exit(0);
       return;
     }
@@ -220,7 +222,8 @@ public class Core extends KPlugin {
     getServer().getMessenger().registerOutgoingPluginChannel(this, "kCore");
     getServer().getMessenger().registerIncomingPluginChannel(this, "kCore", new PluginMessageListener());
     
-    Bukkit.getScheduler().scheduleSyncDelayedTask(this, () -> new SlickUpdater(this, 2).run());
+    Bukkit.getScheduler().scheduleSyncDelayedTask(this,
+        () -> new SlickUpdater(this, 2).run());
     
     validInit = true;
     this.getLogger().info("O plugin foi ativado.");
@@ -233,7 +236,7 @@ public class Core extends KPlugin {
         Profile profile = Profile.unloadProfile(player.getName());
         if (profile != null) {
           profile.saveSync();
-          this.getLogger().info("Saved" + profile.getName());
+          this.getLogger().info("O perfil " + profile.getName() + " foi salvo!");
           profile.destroy();
         }
       });

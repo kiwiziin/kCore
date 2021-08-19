@@ -17,12 +17,10 @@ public class CoinsCommand extends Commands {
       Player player = (Player) sender;
       Profile profile = Profile.getProfile(player.getName());
       player.sendMessage("\n§eSeus coins:");
-      
       for (String name : new String[]{"Bed Wars", "Murder", "The Bridge", "Sky Wars"}) {
-        player.sendMessage(" §8▪ §f" + name + " &7" + StringUtils
+        player.sendMessage(" §8▪ §f" + name + " §7" + StringUtils
             .formatNumber(profile.getCoins("kCore" + name.replace(" ", ""))));
       }
-      
       player.sendMessage("\n");
     } else {
       sender.sendMessage("§cApenas jogadores podem utilizar este comando.");

@@ -275,10 +275,9 @@ public class Profile {
   }
   
   public List<Profile> getLastHitters() {
-    List<Profile> hitters = this.lastHit.entrySet().stream()
-        .filter(entry -> entry.getValue() > System.currentTimeMillis() && isOnline(entry.getKey()))
-        .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
-        .map(entry -> getProfile(entry.getKey()))
+    List<Profile> hitters = this.lastHit.entrySet().stream().filter(entry -> entry.getValue() >
+            System.currentTimeMillis() && isOnline(entry.getKey()))
+        .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue())).map(entry -> getProfile(entry.getKey()))
         .collect(Collectors.toList());
     // limpar após uso
     this.lastHit.clear();

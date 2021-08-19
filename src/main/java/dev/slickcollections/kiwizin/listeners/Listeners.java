@@ -84,7 +84,8 @@ public class Listeners implements Listener {
     if (player.hasPermission("kcore.admin")) {
       if (SlickUpdater.UPDATER != null && SlickUpdater.UPDATER.canDownload) {
         TextComponent component = new TextComponent("");
-        for (BaseComponent components : TextComponent.fromLegacyText("\n §6§lATUALIZAÇÃO \n \n §7Foi encontrado um update novo do §6kCore §f(" + SlickUpdater.getVersion(2) + ")§7, para atualizar basta clicar ")) {
+        for (BaseComponent components : TextComponent.fromLegacyText("\n §6§lATUALIZAÇÃO \n \n §7Foi encontrado um update novo do §6kCore §f(" +
+            SlickUpdater.getVersion(2) + ")§7, para atualizar basta clicar ")) {
           component.addExtra(components);
         }
         TextComponent click = new TextComponent("AQUI");
@@ -114,7 +115,7 @@ public class Listeners implements Listener {
       if (!((CraftServer) Bukkit.getServer()).getHandle().getServer().isRunning() || RESTART_WATCHDOG_STOPPING.get(RESTART_WATCHDOG.get(null))) {
         // server stopped - save SYNC
         profile.saveSync();
-        Core.getInstance().getLogger().info("O jogador " + profile.getName() + " foi salvado!");
+        Core.getInstance().getLogger().info("O perfil " + profile.getName() + " foi salvo!");
       } else {
         // server running - save ASYNC
         profile.save();

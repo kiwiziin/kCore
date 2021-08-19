@@ -53,8 +53,7 @@ public class SkyWarsTable extends DataTable {
     defaultValues.put("rankedgames", new DataContainer(0L));
     defaultValues.put("rankedwins", new DataContainer(0L));
     defaultValues.put("rankedpoints", new DataContainer(0L));
-    for (String key : new String[]{"kills", "deaths", "points",
-        "assists", "wins", "games"}) {
+    for (String key : new String[]{"kills", "deaths", "points", "assists", "wins", "games"}) {
       defaultValues.put("monthly" + key, new DataContainer(0L));
     }
     defaultValues.put("month", new DataContainer((Calendar.getInstance().get(Calendar.MONTH) + 1) + "/" +

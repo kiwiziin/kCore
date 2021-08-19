@@ -142,7 +142,8 @@ public abstract class KScoreboard {
   public KScoreboard build() {
     this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
     this.objective = scoreboard.registerNewObjective(getObjectiveName(), "dummy");
-    this.objective.setDisplayName(this.display == null ? "" : this.display.substring(0, Math.min(this.display.length(), 32)));
+    this.objective.setDisplayName(this.display == null ? "" :
+        this.display.substring(0, Math.min(this.display.length(), 32)));
     this.objective.setDisplaySlot(DisplaySlot.SIDEBAR);
     
     if (this.player != null) {

@@ -41,8 +41,7 @@ public class BuildBattleTable extends DataTable {
     defaultValues.put("wins", new DataContainer(0L));
     defaultValues.put("games", new DataContainer(0L));
     defaultValues.put("points", new DataContainer(0L));
-    for (String key : new String[]{"wins", "games",
-        "points"}) {
+    for (String key : new String[]{"wins", "games", "points"}) {
       defaultValues.put("monthly" + key, new DataContainer(0L));
     }
     defaultValues.put("month", new DataContainer((Calendar.getInstance().get(Calendar.MONTH) + 1) + "/" +

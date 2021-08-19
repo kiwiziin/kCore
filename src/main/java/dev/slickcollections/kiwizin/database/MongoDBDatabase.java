@@ -158,11 +158,11 @@ public class MongoDBDatabase extends Database {
         Document subDocument = document.get(table, Document.class);
         long count = (subDocument == null || !subDocument.containsKey(name) ? 0L : Long.parseLong(subDocument.get(name).toString()));
         result
-            .add(new String[]{StringUtils.getLastColor(Role.getRoleByName(document.getString("role")).getPrefix()) + document.getString("_id"), StringUtils.formatNumber(count)});
+            .add(new String[]{StringUtils.getLastColor(Role.getRoleByName(document.getString("role")).getPrefix()) +
+                document.getString("_id"), StringUtils.formatNumber(count)});
       }
       cursor.close();
-    } catch (Exception ignore) {
-    }
+    } catch (Exception ignore) {}
     
     return result;
   }
@@ -256,11 +256,17 @@ public class MongoDBDatabase extends Database {
       }
       
       String prefix = table.getInfo().name().equalsIgnoreCase("kcoreprofile") ? "" : table.getInfo().name() + ".";
-      if (table.getInfo().name().contains("SkyWars") || table.getInfo().name().contains("TheBridge")) {
-        save.put(prefix + "totalkills", rows.get("1v1kills").getAsLong() + rows.get("2v2kills").getAsLong());
-        save.put(prefix + "totalwins", rows.get("1v1wins").getAsLong() + rows.get("2v2wins").getAsLong());
+      if (table.getInfo().name().contains("SkyWars") || table.getInfo().name().contains("TheBridge") || table.getInfo().name().contains("BedWars")) {
+        if (table.getInfo().name().contains("SkyWars") || table.getInfo().name().contains("TheBridge")) {
+          save.put(prefix + "totalkills", rows.get("1v1kills").getAsLong() + rows.get("2v2kills").getAsLong());
+          save.put(prefix + "totalwins", rows.get("1v1wins").getAsLong() + rows.get("2v2wins").getAsLong());
+        }
         if (table.getInfo().name().contains("TheBridge")) {
           save.put(prefix + "totalpoints", rows.get("1v1points").getAsLong() + rows.get("2v2points").getAsLong());
+        }
+        if (table.getInfo().name().contains("BedWars")) {
+          save.put(prefix + "totalkills", rows.get("1v1kills").getAsLong() + rows.get("2v2kills").getAsLong() + rows.get("4v4kills").getAsLong());
+          save.put(prefix + "totalwins", rows.get("1v1wins").getAsLong() + rows.get("2v2wins").getAsLong() + rows.get("4v4wins").getAsLong());
         }
       }
       

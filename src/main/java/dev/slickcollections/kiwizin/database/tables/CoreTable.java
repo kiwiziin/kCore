@@ -22,12 +22,12 @@ public class CoreTable extends DataTable {
   @Override
   public void init(Database database) {
     if (database instanceof MySQLDatabase) {
-      if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `kCoreProfile` LIKE 'cash'") == null) {
-        ((MySQLDatabase) database).execute("ALTER TABLE `kCoreProfile` ADD `cash` LONG AFTER `name`");
+      if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `kCoreProfile` LIKE 'clan'") == null) {
+        ((MySQLDatabase) database).execute("ALTER TABLE `kCoreProfile` ADD `clan` TEXT AFTER `created`");
       }
     } else if (database instanceof HikariDatabase) {
-      if (((HikariDatabase) database).query("SHOW COLUMNS FROM `kCoreProfile` LIKE 'cash'") == null) {
-        ((HikariDatabase) database).execute("ALTER TABLE `kCoreProfile` ADD `cash` LONG AFTER `name`");
+      if (((HikariDatabase) database).query("SHOW COLUMNS FROM `kCoreProfile` LIKE 'clan'") == null) {
+        ((HikariDatabase) database).execute("ALTER TABLE `kCoreProfile` ADD `clan` TEXT AFTER `created`");
       }
     }
   }

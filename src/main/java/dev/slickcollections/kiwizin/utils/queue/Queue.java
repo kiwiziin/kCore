@@ -17,6 +17,7 @@ public class Queue {
   
   public static final Queue VIP = new Queue();
   public static final Queue MEMBER = new Queue();
+  
   private BukkitTask task;
   private final List<QueuePlayer> players;
   
